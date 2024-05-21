@@ -4,7 +4,10 @@ require([
   "esri/views/MapView",
   "esri/widgets/Home",
   "esri/widgets/LayerList",
-  "esri/widgets/BasemapGallery"],
+  "esri/widgets/BasemapGallery",
+  "esri/widgets/Directions",
+  "esri/layers/RouteLayer"],
+
   function (
     esriConfig,
     WebMap,
@@ -12,18 +15,30 @@ require([
     Home,
     LayerList,
     BasemapGallery,
+    Directions,
+    RouteLayer,
   ) {
     esriConfig.apiKey = "AAPKc0d231b3177f4c7aa4f8fd4cc33d408eFr2xfZB6UcOjXi_RSt5Wf0akFMAjpgs38v03BbLMmZ6YAhkj3X7qwjsqhe6tv9sN";
+
+    const routeLayer = new RouteLayer();
     const webmap = new WebMap({
       portalItem: {
         id: "232b4d297d054b2a831a3ce629ac8495"
       }
     });
 
+    webmap.layers.add(routeLayer);
     const view = new MapView({
       container: "viewDiv",
       map: webmap
     });
+
+    const directionWidget = new Directions ({
+      layer: routeLayer,
+      apiKey: esriConfig.apiKey,
+      view
+
+    })
 
     const homeBtn = new Home({
       view
