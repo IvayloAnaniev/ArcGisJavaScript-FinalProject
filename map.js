@@ -6,7 +6,8 @@ require([
   "esri/widgets/LayerList",
   "esri/widgets/BasemapGallery",
   "esri/widgets/Directions",
-  "esri/layers/RouteLayer"],
+  "esri/layers/RouteLayer",
+  "esri/widgets/ScaleBar",
 
   function (
     esriConfig,
@@ -17,6 +18,7 @@ require([
     BasemapGallery,
     Directions,
     RouteLayer,
+    ScaleBar,
   ) {
     esriConfig.apiKey = "AAPKc0d231b3177f4c7aa4f8fd4cc33d408eFr2xfZB6UcOjXi_RSt5Wf0akFMAjpgs38v03BbLMmZ6YAhkj3X7qwjsqhe6tv9sN";
 
@@ -28,6 +30,7 @@ require([
     });
 
     webmap.layers.add(routeLayer);
+
     const view = new MapView({
       container: "viewDiv",
       map: webmap
@@ -39,6 +42,15 @@ require([
       view
 
     })
+
+    let scaleBar = new ScaleBar ({
+      view
+    });
+      view.ui.add(scaleBar, {
+        position: "bottom-centre"
+      });
+      
+    }]);
 
     const homeBtn = new Home({
       view
@@ -78,6 +90,5 @@ require([
       galleryEl.style.setProperty("display", currentPropGallery == "none" ? "block" : "none");
     }
       }
-      
-
-  });
+    
+    
