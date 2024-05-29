@@ -7,7 +7,7 @@ require([
   "esri/widgets/BasemapGallery",
   "esri/widgets/Directions",
   "esri/layers/RouteLayer",
-  "esri/widgets/ScaleBar",
+  "esri/layers/ScaleBar",
 
   function (
     esriConfig,
