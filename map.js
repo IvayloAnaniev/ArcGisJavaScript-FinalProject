@@ -45,13 +45,38 @@ require([
 
     })
 
-    const searchWidget = new Search({
-      view
-    });
-    view.ui.add(searchWidget, {
-      position: "top-left",
-      index: 2
-    });
+    document.getElementById('search-button').addEventListener('click', function() {
+      const query = document.getElementById('search-input').value;
+      search(query);
+  });
+  
+  function search(query) {
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = '';
+  
+      if (query.trim() === '') {
+          resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+          return;
+      }
+
+      const results = [
+          'Search result 1 for ' + query,
+          'Search result 2 for ' + query,
+          'Search result 3 for ' + query,
+      ];
+  
+      if (results.length === 0) {
+          resultsContainer.innerHTML = '<p>No results found.</p>';
+      } else {
+          const ul = document.createElement('ul');
+          results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result;
+              ul.appendChild(li);
+          });
+          resultsContainer.appendChild(ul);
+      }
+  }
 
     const scaleBar = new ScaleBar({
       view
