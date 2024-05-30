@@ -84,7 +84,7 @@ require([
     view.ui.add(scaleBar, { position: "bottom-right"
     });
 
-  }]);
+
 
 const homeBtn = new Home({
   view
@@ -125,4 +125,4 @@ function toggleButton(element) {
   }
 }
 
-
+}]);
