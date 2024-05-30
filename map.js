@@ -7,7 +7,7 @@ require([
   "esri/widgets/BasemapGallery",
   "esri/widgets/Directions",
   "esri/layers/RouteLayer",
-  "esri/layers/ScaleBar",
+  "esri/widgets/ScaleBar",
 
   function (
     esriConfig,
@@ -36,59 +36,67 @@ require([
       map: webmap
     });
 
-    const directionWidget = new Directions ({
+    const directionWidget = new Directions({
       layer: routeLayer,
       apiKey: esriConfig.apiKey,
       view
 
     })
 
-    let scaleBar = new ScaleBar ({
+    const searchWidget = new Search({
       view
     });
-      view.ui.add(scaleBar, {
-        position: "bottom-centre"
-      });
-      
-    }]);
+    view.ui.add(searchWidget, {
+      position: "top-left",
+      index: 2
+    });
 
-    const homeBtn = new Home({
+    const scaleBar = new ScaleBar({
       view
     });
-
-    view.ui.add(homeBtn, "top-left");
-
-    const layerlist = new LayerList({
-      view,
-    });
-    view.ui.add("layer-list-btn", "top-right");
-    view.ui.add(layerlist, "top-right");
-    view.ui.add("basemap-gallery-btn", "top-right")
-
-    const basemapGalery = new BasemapGallery({
-      view
+    view.ui.add(scaleBar, {
+      position: "bottom-right"
     });
 
-    view.ui.add(basemapGalery, "top-right");
+  }]);
 
-    document.getElementById("layer-list-btn").addEventListener("click", function () {
-      toggleButton("layer-list");
-    });
+const homeBtn = new Home({
+  view
+});
 
-    document.getElementById("basemap-gallery-btn").addEventListener("click", function () {
-      toggleButton("gallery");
-    });
+view.ui.add(homeBtn, "top-left");
 
-    function toggleButton(element) {
-      if (element == "layer-list") {
-        const layerListEl = document.getElementsByClassName("esri-layer-list")[0];
-        const currentProp = layerListEl.style.getPropertyValue("display");
-        layerListEl.style.setProperty("display", currentProp == "none" ? "block" : "none");
-      } else if (element == "gallery") {
-        const galleryEl = document.getElementsByClassName("esri-basemap-gallery")[0];
-      const currentPropGallery = galleryEl.style.getPropertyValue("display");
-      galleryEl.style.setProperty("display", currentPropGallery == "none" ? "block" : "none");
-    }
-      }
-    
-    
+const layerlist = new LayerList({
+  view,
+});
+view.ui.add("layer-list-btn", "top-right");
+view.ui.add(layerlist, "top-right");
+view.ui.add("basemap-gallery-btn", "top-right")
+
+const basemapGalery = new BasemapGallery({
+  view
+});
+
+view.ui.add(basemapGalery, "top-right");
+
+document.getElementById("layer-list-btn").addEventListener("click", function () {
+  toggleButton("layer-list");
+});
+
+document.getElementById("basemap-gallery-btn").addEventListener("click", function () {
+  toggleButton("gallery");
+});
+
+function toggleButton(element) {
+  if (element == "layer-list") {
+    const layerListEl = document.getElementsByClassName("esri-layer-list")[0];
+    const currentProp = layerListEl.style.getPropertyValue("display");
+    layerListEl.style.setProperty("display", currentProp == "none" ? "block" : "none");
+  } else if (element == "gallery") {
+    const galleryEl = document.getElementsByClassName("esri-basemap-gallery")[0];
+    const currentPropGallery = galleryEl.style.getPropertyValue("display");
+    galleryEl.style.setProperty("display", currentPropGallery == "none" ? "block" : "none");
+  }
+}
+
+
