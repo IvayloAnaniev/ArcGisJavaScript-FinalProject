@@ -56,8 +56,7 @@ require([
     const scaleBar = new ScaleBar({
       view
     });
-    view.ui.add(scaleBar, {
-      position: "bottom-right"
+    view.ui.add(scaleBar, { position: "bottom-right"
     });
 
   }]);
@@ -66,7 +65,7 @@ const homeBtn = new Home({
   view
 });
 
-view.ui.add(homeBtn, "top-left");
+view.ui.add(homeBtn, {position: "top-left"});
 
 const layerlist = new LayerList({
   view,
