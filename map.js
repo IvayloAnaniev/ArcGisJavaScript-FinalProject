@@ -116,7 +116,7 @@ document.getElementById("basemap-gallery-btn").addEventListener("click", functio
   toggleButton("gallery");
 });
 
-document.getElementById("search-button").addEventListener('click', function () {
+document.getElementById("search-button").addEventListener("click", function () {
   toggleButton("search");
 });
 
