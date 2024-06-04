@@ -111,6 +111,7 @@ view.ui.add(layerlist, "top-right");
 view.ui.add("basemap-gallery-btn", "top-right")
 view.ui.add(basemapGalery, "top-right");
 view.ui.add("search-button", "bottom-left");
+view.ui.add(searchButton, "top-right");
 
 document.getElementById("layer-list-btn").addEventListener("click", function () {
   toggleButton("layer-list");
