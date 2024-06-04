@@ -96,13 +96,13 @@ view.ui.add(homeBtn, {position: "top-left"});
 const layerlist = new LayerList({
   view,
 });
-view.ui.add("layer-list-btn", "top-right");
-view.ui.add(layerlist, "top-right");
 
 
 const basemapGalery = new BasemapGallery({
   view
 });
+view.ui.add("layer-list-btn", "top-right");
+view.ui.add(layerlist, "top-right");
 view.ui.add("basemap-gallery-btn", "top-right")
 view.ui.add(basemapGalery, "top-right");
 
