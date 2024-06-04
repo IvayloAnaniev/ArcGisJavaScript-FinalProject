@@ -101,11 +101,15 @@ const layerlist = new LayerList({
 const basemapGalery = new BasemapGallery({
   view
 });
+
+const searchButton = new Search({
+  view
+});
+
 view.ui.add("layer-list-btn", "top-right");
 view.ui.add(layerlist, "top-right");
 view.ui.add("basemap-gallery-btn", "top-right")
 view.ui.add(basemapGalery, "top-right");
-
 view.ui.add("search-button", "bottom-left");
 
 document.getElementById("layer-list-btn").addEventListener("click", function () {
